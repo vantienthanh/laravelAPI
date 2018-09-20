@@ -41,7 +41,7 @@ class CategoryController extends BaseController
         $category = $this->category->update($category, $request->all());
         return $this->response->array(['status' => 'success', 'data' => $category]);
     }
-
+//qweqwe
     public function destroy($id) {
          $this->category->destroy($id);
     }
