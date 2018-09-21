@@ -10,6 +10,7 @@ use Modules\Category\Entities\Category;
 use Modules\Category\Http\Requests\CreateCategoryRequest;
 use Modules\Category\Http\Requests\UpdateCategoryRequest;
 use Modules\Category\Repositories\CategoryRepository;
+use Modules\Category\Transformers\CategoryTransformers;
 class CategoryController extends BaseController
 {
     private $category;
@@ -29,8 +30,9 @@ class CategoryController extends BaseController
 
     public function show( $id) {
         $categories = $this->category->find($id);
-        return $categories;
+        return $this->response->item($categories, new CategoryTransformers);
     }
+
 
     public function store() {
 
@@ -39,7 +41,7 @@ class CategoryController extends BaseController
     public function update($id, UpdateCategoryRequest $request) {
         $category = $this->category->find($id);
         $category = $this->category->update($category, $request->all());
-        return $this->response->array(['status' => 'success', 'data' => $category]);
+        return $this->response->collection($category, new CategoryTransformers);
     }
 //qweqwe
     public function destroy($id) {
