@@ -5,4 +5,4 @@
  * Date: 9/21/2018
  * Time: 4:50 PM
  */
-use Dingo\Api\Routing\Route;
+use Dingo\Api\Auth\Provider\JWT;

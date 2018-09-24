@@ -3,11 +3,6 @@
 namespace Modules\Category\Http\Controllers\Api;
 
 use App\Http\Controllers\Api\BaseController;
-use Illuminate\Routing\Controller;
-use Illuminate\Http\Request;
-use Illuminate\Http\Response;
-use Modules\Category\Entities\Category;
-use Modules\Category\Http\Requests\CreateCategoryRequest;
 use Modules\Category\Http\Requests\UpdateCategoryRequest;
 use Modules\Category\Repositories\CategoryRepository;
 use Modules\Category\Transformers\CategoryTransformers;
@@ -22,10 +17,7 @@ class CategoryController extends BaseController
     public function index()
     {
         $categories = $this->category->all();
-        return $this->response->array([
-            'status' => 'success',
-            'data' => $categories
-        ]);
+        return $this->response->collection($categories, new CategoryTransformers);
     }
 
     public function show( $id) {
@@ -43,7 +35,6 @@ class CategoryController extends BaseController
         $category = $this->category->update($category, $request->all());
         return $this->response->collection($category, new CategoryTransformers);
     }
-//qweqwe
     public function destroy($id) {
          $this->category->destroy($id);
     }
