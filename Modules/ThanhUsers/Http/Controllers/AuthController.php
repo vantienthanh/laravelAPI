@@ -5,6 +5,7 @@ namespace Modules\ThanhUsers\Http\Controllers;
 use App\Http\Controllers\Api\BaseController;
 use Illuminate\Http\Request;
 use JWTAuth;
+use Modules\ThanhUsers\Transformers\UserTransformers;
 use Tymon\JWTAuth\Exceptions\InvalidClaimException;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use Modules\User\Repositories\UserRepository;
@@ -59,10 +60,14 @@ class AuthController extends BaseController
         }
 
         // the token is valid and we have found the user via the sub claim
-        return response()->json(compact('user'));
+        return $this->response->item($user, new UserTransformers);
     }
     public function testPost(){
-        JWTAuth::parseToken()->invalidate();
-     echo "qưe";
+        $token = JWTAuth::getToken();
+        try{
+            JWTAuth::invalidate($token);
+        }catch (JWTException $e){
+            echo $e->getMessage();
+        }
     }
 }
