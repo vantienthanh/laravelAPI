@@ -2,13 +2,15 @@
 
 namespace Modules\Category\Http\Requests;
 
-use Modules\Core\Internationalisation\BaseFormRequest;
+use Dingo\Api\Http\FormRequest;
 
-class UpdateCategoryRequest extends BaseFormRequest
+class UpdateCategoryRequest extends FormRequest
 {
     public function rules()
     {
-        return [];
+        return [
+            "name"=>"required|max:10"
+        ];
     }
 
     public function translationRules()
@@ -23,7 +25,9 @@ class UpdateCategoryRequest extends BaseFormRequest
 
     public function messages()
     {
-        return [];
+        return [
+            'name.required' => '123'
+        ];
     }
 
     public function translationMessages()

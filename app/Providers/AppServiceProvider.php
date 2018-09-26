@@ -21,6 +21,10 @@ class AppServiceProvider extends ServiceProvider
         Carbon::serializeUsing(function ($carbon) {
             return $carbon->format('d/m/y H:i:s');
         });
+        app('Dingo\Api\Auth\Auth')->extend('jwt', function ($app) {
+
+            return new \Dingo\Api\Auth\Provider\JWT($app['Tymon\JWTAuth\JWTAuth']);
+        });
     }
 
     /**

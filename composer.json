@@ -30,7 +30,8 @@
         "idavoll/tag-module": "~3.0",
         "idavoll/flatly-theme": "~3.0",
         "idavoll/adminlte-theme": "~3.0",
-        "barryvdh/laravel-ide-helper": "v2.5.0"
+        "barryvdh/laravel-ide-helper": "v2.5.0",
+        "tymon/jwt-auth": "^1.0.0-rc.2"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

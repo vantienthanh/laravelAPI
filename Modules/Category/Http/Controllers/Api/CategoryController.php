@@ -4,6 +4,7 @@ namespace Modules\Category\Http\Controllers\Api;
 
 use App\Http\Controllers\Api\BaseController;
 use Modules\Category\Http\Requests\UpdateCategoryRequest;
+use Modules\Category\Http\Requests\CreateCategoryRequest;
 use Modules\Category\Repositories\CategoryRepository;
 use Modules\Category\Transformers\CategoryTransformers;
 class CategoryController extends BaseController
@@ -26,14 +27,14 @@ class CategoryController extends BaseController
     }
 
 
-    public function store() {
-
+    public function store(CreateCategoryRequest $request) {
+        $this->category->create($request->all());
     }
 
     public function update($id, UpdateCategoryRequest $request) {
         $category = $this->category->find($id);
         $category = $this->category->update($category, $request->all());
-        return $this->response->collection($category, new CategoryTransformers);
+        return $this->response->item($category, new CategoryTransformers);
     }
     public function destroy($id) {
          $this->category->destroy($id);

@@ -37,13 +37,18 @@ return [
 
     'guards' => [
         'web' => [
-            'driver' => 'sentinel-guard',
+            'driver' => 'session',
             'provider' => 'users',
         ],
 
         'api' => [
-            'driver' => 'token',
+            'driver' => 'jwt',
             'provider' => 'users',
+        ],
+
+        'customers' => [
+            'driver' => 'jwt',
+            'provider' => 'customers',
         ],
     ],
 
@@ -67,8 +72,14 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => Modules\User\Entities\Sentinel\User::class,
+            'model' => \Modules\User\Entities\Sentinel\User::class,
         ],
+
+        'customers' => [
+            'driver' => 'eloquent',
+            'model' => \Modules\User\Entities\Sentinel\User::class,
+        ],
+
 
         // 'users' => [
         //     'driver' => 'database',
