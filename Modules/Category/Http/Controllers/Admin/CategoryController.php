@@ -33,11 +33,15 @@ class CategoryController extends AdminBaseController
     {
         $categories = $this->category->all();
         $categories->load('posts');
+        $categories->load('media');
+//        $result = $categories->find(53)->media->path;
+//        dd($result);
 //        foreach ($categories as $category)
 //        {
 //            dd($category->category);
 //        }
 //        dd($categories->category);
+
         return view('category::admin.categories.index', compact('categories',$categories));
     }
 
@@ -59,8 +63,10 @@ class CategoryController extends AdminBaseController
      */
     public function store(CreateCategoryRequest $request)
     {
-        $this->category->create($request->all());
-
+        $a= $request->medias_single['featured_image'];
+        $result = $request->all();
+        $result['media_id']=$a;
+        $this->category->create($result);
         return redirect()->route('admin.category.category.index')
             ->withSuccess(trans('core::core.messages.resource created', ['name' => trans('category::categories.title.categories')]));
     }

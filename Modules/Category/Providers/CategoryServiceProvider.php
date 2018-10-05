@@ -31,7 +31,9 @@ class CategoryServiceProvider extends ServiceProvider
         $this->app['events']->listen(LoadingBackendTranslations::class, function (LoadingBackendTranslations $event) {
             $event->load('categories', array_dot(trans('category::categories')));
             $event->load('users', array_dot(trans('category::users')));
+            $event->load('newentities', array_dot(trans('category::newentities')));
             // append translations
+
 
 
         });
@@ -80,7 +82,20 @@ class CategoryServiceProvider extends ServiceProvider
                 return new \Modules\Category\Repositories\Cache\CacheUsersDecorator($repository);
             }
         );
+        $this->app->bind(
+            'Modules\Category\Repositories\newEntityRepository',
+            function () {
+                $repository = new \Modules\Category\Repositories\Eloquent\EloquentnewEntityRepository(new \Modules\Category\Entities\newEntity());
+
+                if (! config('app.cache')) {
+                    return $repository;
+                }
+
+                return new \Modules\Category\Repositories\Cache\CachenewEntityDecorator($repository);
+            }
+        );
 // add bindings
+
 
 
     }

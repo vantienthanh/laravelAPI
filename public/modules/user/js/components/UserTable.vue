@@ -1,3 +1,4 @@
+
 <template>
     <div>
         <div class="content-header">
@@ -55,13 +56,7 @@
                                         </a>
                                     </template>
                                 </el-table-column>
-                                <el-table-column prop="email" :label="trans('users.table.email')" sortable="custom">
-                                    <template slot-scope="scope">
-                                        <a @click.prevent="goToEdit(scope)" href="#">
-                                            {{ scope.row.email }}
-                                        </a>
-                                    </template>
-                                </el-table-column>
+
                                 <el-table-column prop="created_at" :label="trans('core.table.created at')"
                                                  sortable="custom">
                                 </el-table-column>

@@ -38,7 +38,7 @@ class RegisterCategorySidebar implements \Maatwebsite\Sidebar\SidebarExtender
     {
         $menu->group(trans('core::sidebar.content'), function (Group $group) {
             $group->item(trans('category::categories.title.categories'), function (Item $item) {
-                $item->icon('fa fa-copy');
+                $item->icon('fa fa-cog');
                 $item->weight(10);
                 $item->authorize(
                      /* append */
@@ -61,7 +61,17 @@ class RegisterCategorySidebar implements \Maatwebsite\Sidebar\SidebarExtender
                         $this->auth->hasAccess('category.users.index')
                     );
                 });
+                $item->item(trans('category::newentities.title.newentities'), function (Item $item) {
+                    $item->icon('fa fa-copy');
+                    $item->weight(0);
+                    $item->append('admin.category.newentity.create');
+                    $item->route('admin.category.newentity.index');
+                    $item->authorize(
+                        $this->auth->hasAccess('category.newentities.index')
+                    );
+                });
 // append
+
 
 
             });

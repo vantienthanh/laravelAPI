@@ -1,5 +1,4 @@
 <div class="box-body">
-    <p>
-        Your fields //
-    </p>
+    {{--ham tim trong module/core/macros--}}
+    {!! Form::normalTextarea('content','Body',$errors) !!}
 </div>

@@ -1,5 +1,3 @@
 <div class="box-body">
-    <p>
-        Your fields //
-    </p>
+    <span>Name</span><input class="form-control" type="text" name="name" id="name">
 </div>

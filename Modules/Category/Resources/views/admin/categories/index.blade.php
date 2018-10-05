@@ -1,3 +1,4 @@
+
 @extends('layouts.master')
 
 @section('content-header')
@@ -32,6 +33,7 @@
                                 <th>id</th>
                                 <th>Name</th>
                                 <th>parent ID</th>
+                                <th>Image</th>
                                 <th>{{ trans('core::core.table.created at') }}</th>
                                 <th data-sortable="false">{{ trans('core::core.table.actions') }}</th>
                             </tr>
@@ -42,7 +44,10 @@
                             <tr>
                                 <td>{{$category->id}}</td>
                                 <td>{{$category->name}}</td>
-                                <td>{{$category->parent->name}}</td>
+                                <td>{{$category->parent['name']}}</td>
+                                <td>
+                                    <img src="<?php if($category->media==true){echo $category->media->path;}else{echo "";}?>" alt="" width="150px">
+                                </td>
                                 <td>
                                     <a href="{{ route('admin.category.category.edit', [$category->id]) }}">
                                         {{ $category->created_at }}

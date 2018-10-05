@@ -41,6 +41,7 @@ return [
         'last-name' => 'Last name',
         'email' => 'Email',
         'actions' => 'Actions',
+        'birthday'=>'Birthday'
     ],
     'navigation' => [
         'back to index' => 'Back to users index',

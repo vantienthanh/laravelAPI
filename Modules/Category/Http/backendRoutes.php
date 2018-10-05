@@ -70,7 +70,41 @@ $router->group(['prefix' =>'/category'], function (Router $router) {
         'uses' => 'UsersController@destroy',
         'middleware' => 'can:category.users.destroy'
     ]);
+    $router->bind('newentity', function ($id) {
+        return app('Modules\Category\Repositories\newEntityRepository')->find($id);
+    });
+    $router->get('newentities', [
+        'as' => 'admin.category.newentity.index',
+        'uses' => 'newEntityController@index',
+        'middleware' => 'can:category.newentities.index'
+    ]);
+    $router->get('newentities/create', [
+        'as' => 'admin.category.newentity.create',
+        'uses' => 'newEntityController@create',
+        'middleware' => 'can:category.newentities.create'
+    ]);
+    $router->post('newentities', [
+        'as' => 'admin.category.newentity.store',
+        'uses' => 'newEntityController@store',
+        'middleware' => 'can:category.newentities.create'
+    ]);
+    $router->get('newentities/{newentity}/edit', [
+        'as' => 'admin.category.newentity.edit',
+        'uses' => 'newEntityController@edit',
+        'middleware' => 'can:category.newentities.edit'
+    ]);
+    $router->put('newentities/{newentity}', [
+        'as' => 'admin.category.newentity.update',
+        'uses' => 'newEntityController@update',
+        'middleware' => 'can:category.newentities.edit'
+    ]);
+    $router->delete('newentities/{newentity}', [
+        'as' => 'admin.category.newentity.destroy',
+        'uses' => 'newEntityController@destroy',
+        'middleware' => 'can:category.newentities.destroy'
+    ]);
 // append
+
 
 
 });

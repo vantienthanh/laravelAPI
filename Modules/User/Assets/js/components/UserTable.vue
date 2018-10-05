@@ -1,3 +1,4 @@
+
 <template>
     <div>
         <div class="content-header">
@@ -59,6 +60,13 @@
                                     <template slot-scope="scope">
                                         <a @click.prevent="goToEdit(scope)" href="#">
                                             {{ scope.row.email }}
+                                        </a>
+                                    </template>
+                                </el-table-column>
+                                <el-table-column prop="email" :label="trans('users.table.birthday')" sortable="custom">
+                                    <template slot-scope="scope">
+                                        <a @click.prevent="goToEdit(scope)" href="#">
+                                            {{ scope.row.birthday }}
                                         </a>
                                     </template>
                                 </el-table-column>

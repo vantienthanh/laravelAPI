@@ -13,7 +13,14 @@ return [
         'edit' => 'category::users.edit resource',
         'destroy' => 'category::users.destroy resource',
     ],
+    'category.newentities' => [
+        'index' => 'category::newentities.list resource',
+        'create' => 'category::newentities.create resource',
+        'edit' => 'category::newentities.edit resource',
+        'destroy' => 'category::newentities.destroy resource',
+    ],
 // append
+
 
 
 ];

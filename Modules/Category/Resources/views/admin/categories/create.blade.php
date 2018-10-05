@@ -25,7 +25,7 @@
                             @include('category::admin.categories.partials.create-fields', ['lang' => $locale])
                         </div>
                     @endforeach
-
+                        @mediaSingle('featured_image')
                     <div class="box-footer">
                         <button type="submit" class="btn btn-primary btn-flat">{{ trans('core::core.button.create') }}</button>
                         <a class="btn btn-danger pull-right btn-flat" href="{{ route('admin.category.category.index')}}"><i class="fa fa-times"></i> {{ trans('core::core.button.cancel') }}</a>

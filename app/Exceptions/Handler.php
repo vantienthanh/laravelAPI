@@ -7,6 +7,7 @@ use Illuminate\Session\TokenMismatchException;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Modules\Core\Foundation\Asset\AssetNotFoundException;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -60,6 +61,9 @@ class Handler extends ExceptionHandler
     {
         if ($e instanceof ValidationException) {
             return parent::render($request, $e);
+        }
+
+        if ($e instanceof AssetNotFoundException) {
         }
 
         if ($e instanceof TokenMismatchException) {

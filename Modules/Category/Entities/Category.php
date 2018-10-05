@@ -4,6 +4,7 @@ namespace Modules\Category\Entities;
 
 use Dimsav\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Model;
+use Modules\Media\Entities\File;
 use Modules\Post\Entities\Post;
 
 class Category extends Model
@@ -12,7 +13,7 @@ class Category extends Model
 
     protected $table = 'category__categories';
     public $translatedAttributes = [];
-    protected $fillable = ["name"];
+    protected $fillable = ["name","media_id"];
 //    public function category(){
 //        return $this->belongsTo("Modules\Category\Entities\Category",'parent_id');
 //    }
@@ -32,5 +33,9 @@ class Category extends Model
     }
     public function posts(){
         return $this->hasMany(Post::class);
+    }
+    public function media(){
+        return$this->hasOne(File::class,"id","media_id");
+
     }
 }
