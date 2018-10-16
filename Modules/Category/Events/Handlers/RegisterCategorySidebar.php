@@ -55,19 +55,10 @@ class RegisterCategorySidebar implements \Maatwebsite\Sidebar\SidebarExtender
                 $item->item(trans('category::users.title.users'), function (Item $item) {
                     $item->icon('fa fa-copy');
                     $item->weight(0);
-                    $item->append('admin.category.users.create');
+//                    $item->append('admin.category.users.create');
                     $item->route('admin.category.users.index');
                     $item->authorize(
                         $this->auth->hasAccess('category.users.index')
-                    );
-                });
-                $item->item(trans('category::newentities.title.newentities'), function (Item $item) {
-                    $item->icon('fa fa-copy');
-                    $item->weight(0);
-                    $item->append('admin.category.newentity.create');
-                    $item->route('admin.category.newentity.index');
-                    $item->authorize(
-                        $this->auth->hasAccess('category.newentities.index')
                     );
                 });
 // append

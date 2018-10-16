@@ -9,6 +9,7 @@ use Modules\Category\Http\Requests\CreateCategoryRequest;
 use Modules\Category\Http\Requests\UpdateCategoryRequest;
 use Modules\Category\Repositories\CategoryRepository;
 use Modules\Core\Http\Controllers\Admin\AdminBaseController;
+use Modules\Media\Repositories\FileRepository;
 
 class CategoryController extends AdminBaseController
 {
@@ -63,6 +64,7 @@ class CategoryController extends AdminBaseController
      */
     public function store(CreateCategoryRequest $request)
     {
+
         $a= $request->medias_single['featured_image'];
         $result = $request->all();
         $result['media_id']=$a;
@@ -77,9 +79,9 @@ class CategoryController extends AdminBaseController
      * @param  Category $category
      * @return Response
      */
-    public function edit(Category $category)
+    public function edit(Category $category, FileRepository $fileRepository)
     {
-        return view('category::admin.categories.edit', compact('category'));
+        return view('category::admin.categories.edit', compact('category','fileRepository'));
     }
 
     /**
@@ -91,7 +93,6 @@ class CategoryController extends AdminBaseController
      */
     public function update(Category $category, UpdateCategoryRequest $request)
     {
-        dd($request);
         $this->category->update($category, $request->all());
 
         return redirect()->route('admin.category.category.index')

@@ -15,7 +15,7 @@
     {!! Form::open(['route' => ['admin.category.category.store'], 'method' => 'post']) !!}
     <div class="row">
         <div class="col-md-12">
-            <div class="nav-tabs-custom">
+            <div class="nav-tabs-custom">0
                 @include('partials.form-tab-headers')
                 <div class="tab-content">
                     <?php $i = 0; ?>

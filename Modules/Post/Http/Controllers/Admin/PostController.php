@@ -34,7 +34,7 @@ class PostController extends AdminBaseController
     {
         $posts = $this->post->all();
 
-        return view('post::admin.posts.index', compact(''));
+        return view('post::admin.posts.index', compact('posts'));
     }
 
     /**

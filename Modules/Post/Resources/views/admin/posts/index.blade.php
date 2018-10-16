@@ -29,6 +29,8 @@
                         <table class="data-table table table-bordered table-hover">
                             <thead>
                             <tr>
+                                <th>ID</th>
+                                <th>content</th>
                                 <th>{{ trans('core::core.table.created at') }}</th>
                                 <th data-sortable="false">{{ trans('core::core.table.actions') }}</th>
                             </tr>
@@ -37,6 +39,8 @@
                             <?php if (isset($posts)): ?>
                             <?php foreach ($posts as $post): ?>
                             <tr>
+                                <td>{{$post->id}}</td>
+                                <td><?php print($post->content) ?></td>
                                 <td>
                                     <a href="{{ route('admin.post.post.edit', [$post->id]) }}">
                                         {{ $post->created_at }}

@@ -1,5 +1,3 @@
 <div class="box-body">
-    <p>
-        Your fields //
-    </p>
+    {!! Form::normalTextarea('content','Body',$errors,$post) !!}
 </div>

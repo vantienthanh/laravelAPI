@@ -12,5 +12,7 @@
     <div class="row">
         <h1>{{ $page->title }}</h1>
         {!! $page->body !!}
+        {!! Menu::get('menu 2') !!}
+
     </div>
 @stop

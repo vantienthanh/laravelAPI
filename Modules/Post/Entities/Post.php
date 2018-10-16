@@ -12,7 +12,7 @@ class Post extends Model
 
     protected $table = 'post__posts';
     public $translatedAttributes = [];
-    protected $fillable = [];
+    protected $fillable = ['content'];
     public function category(){
         return $this->belongsTo(Category::class,"category_id","id");
     }
